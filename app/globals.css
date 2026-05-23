@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 210 40% 96%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 258 88% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 210 40% 80%;
+    --muted: 222 47% 14%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 230 70% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 47% 14%;
+    --input: 222 47% 12%;
+    --ring: 258 88% 60%;
+    --radius: 0.625rem;
+    --chart-1: 258 88% 60%;
+    --chart-2: 230 70% 55%;
+    --chart-3: 180 60% 50%;
+    --chart-4: 45 90% 55%;
+    --chart-5: 0 72% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(222 47% 20%);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(258 88% 45%);
+  }
+}
+
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+  }
+
+  /* Glowing border effect */
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.3),
+      0 0 20px rgba(124, 58, 237, 0.1);
+  }
+
+  .glow-border:focus-within {
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.6),
+      0 0 30px rgba(124, 58, 237, 0.2);
+  }
+
+  /* Message bubble styles */
+  .message-user {
+    background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  }
+
+  .message-assistant {
+    background: hsl(222 47% 10%);
+    border: 1px solid hsl(222 47% 18%);
+  }
+
+  /* Typing dots animation */
+  .typing-dot {
+    @apply w-2 h-2 rounded-full bg-purple-400;
+    animation: typingBounce 1.4s ease-in-out infinite;
+  }
+
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes typingBounce {
+    0%, 60%, 100% {
+      transform: translateY(0);
+      opacity: 0.4;
+    }
+    30% {
+      transform: translateY(-6px);
+      opacity: 1;
+    }
+  }
+
+  /* Shimmer loading */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(222 47% 12%) 0%,
+      hsl(222 47% 18%) 50%,
+      hsl(222 47% 12%) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Prose styles for AI responses */
+  .prose-dark p {
+    @apply mb-3 last:mb-0 leading-relaxed;
+  }
+
+  .prose-dark code {
+    @apply bg-slate-800 text-purple-300 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .prose-dark pre {
+    @apply bg-slate-900 border border-slate-700 rounded-lg p-4 overflow-x-auto my-3;
+  }
+
+  .prose-dark pre code {
+    @apply bg-transparent p-0 text-slate-300;
+  }
+
+  .prose-dark ul {
+    @apply list-disc list-inside space-y-1 mb-3;
+  }
+
+  .prose-dark ol {
+    @apply list-decimal list-inside space-y-1 mb-3;
+  }
+
+  .prose-dark li {
+    @apply text-slate-300;
+  }
+
+  .prose-dark strong {
+    @apply text-white font-semibold;
+  }
+
+  .prose-dark h1, .prose-dark h2, .prose-dark h3 {
+    @apply font-bold text-white mb-2 mt-4 first:mt-0;
+  }
+
+  .prose-dark blockquote {
+    @apply border-l-2 border-purple-500 pl-4 italic text-slate-400 my-3;
+  }
+
+  .prose-dark a {
+    @apply text-purple-400 hover:text-purple-300 underline underline-offset-2;
+  }
+
+  .prose-dark hr {
+    @apply border-slate-700 my-4;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(26, 26, 46, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
